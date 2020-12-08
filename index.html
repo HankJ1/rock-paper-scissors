@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <!-- <link href="styles/styles.css" rel="stylesheet"> -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ei=edge">
+        <title>Rock Paper Scissors</title>
+
+        <script>
+            function computerPlay() {
+                let a = Math.round(Math.random() * 2);
+                if (a == 0) {
+                    return "Scissors";
+                } else if (a == 1) {
+                    return "Paper";
+                } else {
+                    return "Rock";
+                }
+            }
+
+            function getUserPlay() {
+                let a = prompt("Rock, Paper, or Scissors");
+                let b = a.toUpperCase();
+                if (b == "ROCK") {
+                    return "Rock";
+                } else if (b == "SCISSORS") {
+                    return "Scissors" ;
+                } else if (b == "PAPER") {
+                    return "Paper";
+                } else {
+                    alert("your input is spelled incorrectly");
+                }
+            }
+
+            function determineVictor(user, computer) {
+                //console.log(computer);
+                //console.log(user);
+                if (user == undefined || computer == undefined) {
+                    return undefined;
+                }
+                if (computer == user) {
+                    console.log("its a tie!");
+                    return "T";
+                }
+                else if (computer == "Scissors" && user == "Paper") {
+                    console.log(`You lose! ${computer} beats ${user}!`);
+                    return "L";
+                } else if (computer == "Paper" && user == "Rock") {
+                    console.log(`You lose! ${computer} beats ${user}!`);
+                    return "L";
+                } else if (computer == "Rock" && user == "Scissors") {
+                    console.log(`You lose! ${computer} beats ${user}!`);
+                    return "L";
+                } else {
+                    console.log(`You win! ${user} beats ${computer}!`);
+                    return "W";
+                }
+            }
+           function game() {
+               let userscore = 0;
+               let compscore = 0;
+               while (compscore < 5 && userscore < 5) {
+                   let a = determineVictor(getUserPlay(), computerPlay());
+                    if (a == "L") {
+                        compscore++;
+                    } else if (a == "W") {
+                        userscore++;
+                    }
+                    console.log(`your score: ${userscore} Comp score: ${compscore}`)
+               }
+               if (compscore == 5) {
+                   console.log("the shame of defeat will ring forevor");
+                   return "L";
+               } else if (userscore == 5) {
+                   console.log("you got lucky this time buster");
+                   return "W";
+               }
+           }
+           game();
+            //determineVictor(getUserPlay(), computerPlay());
+
+
+
+        </script>
+
+
+
+    </head>
+
+
+
+
+
+</html>
